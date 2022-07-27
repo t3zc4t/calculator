@@ -1,7 +1,14 @@
 const add=(a,b)=>a+b;
 const subtract=(a,b)=>a-b;
-const multiply=(a,b)=>Math.round(a*b);
-const divide=(a,b)=>Math.round(a/b);
+const multiply=(a,b)=>{
+    if(Number.isInteger(a) && Number.isInteger(b)){console.log("Int");
+        return a*b;
+    }
+    else{console.log("NonInt");
+        return (a*b).toFixed(2);
+    }
+};
+const divide=(a,b)=>(a/b).toFixed(2);
 const operate=(operator,a,b)=>{
     switch(operator){
         case "+":return add(a,b);
@@ -26,9 +33,13 @@ let total="";
 let clickedOpTimes=false;
 
 //Numbers Buttons
-document.querySelectorAll(".numbers button").forEach(elem=>elem.addEventListener("click",elem=>{
-    if(!clickedOpTimes){document.querySelector(".display").innerText+=elem.target.innerText;}
-    else{document.querySelector(".display").innerText=elem.target.innerText;}
+document.querySelectorAll(".num-normal").forEach(elem=>elem.addEventListener("click",elem=>{
+    if(!clickedOpTimes){
+        document.querySelector(".display").innerText+=elem.target.innerText;
+    }
+    else{
+        document.querySelector(".display").innerText=elem.target.innerText;
+    }
     clickedOpTimes=false;
     console.log(prevValue);
 }));
@@ -55,9 +66,13 @@ document.querySelectorAll(".op,.eq").forEach(elem=>elem.addEventListener("click"
     }
    }}
    document.querySelector(".display").innerText="";clickedOp=elem.target.innerText;document.querySelector(".operator").innerText=clickedOp;
-   
-    
 }));
+
+document.querySelector(".point").addEventListener("click",elem=>{
+    let numRegex=/^\d+\.?\d*/;
+    document.querySelector(".display").innerText+=".";
+    document.querySelector(".display").innerText=document.querySelector(".display").innerText.match(numRegex)[0];
+ });
 
 
 document.querySelector(".ac").addEventListener("click",elem=>{
@@ -72,22 +87,22 @@ document.querySelector(".c").addEventListener("click",elem=>{
  });
 
 document.querySelector("body").addEventListener("keydown",elem=>{
-console.log(elem);
-switch (elem.key){
-    case "1":document.querySelector("#one").click();break;
-    case "2":document.querySelector("#two").click();break;
-    case "3":document.querySelector("#three").click();break;
-    case "4":document.querySelector("#four").click();break;
-    case "5":document.querySelector("#five").click();break;
-    case "6":document.querySelector("#six").click();break;
-    case "7":document.querySelector("#seven").click();break;
-    case "8":document.querySelector("#eight").click();break;
-    case "9":document.querySelector("#nine").click();break;
-    case "10":document.querySelector("#ten").click();break;
-    case "+":document.querySelector("#plu").click();break;
-    case "-":document.querySelector("#sub").click();break;
-    case "*":document.querySelector("#mul").click();break;
-    case "/":document.querySelector("#div").click();break;
-    case "=":document.querySelector("#equ").click();break;
-}
+    switch (elem.key){
+        case "1":document.querySelector("#one").click();break;
+        case "2":document.querySelector("#two").click();break;
+        case "3":document.querySelector("#three").click();break;
+        case "4":document.querySelector("#four").click();break;
+        case "5":document.querySelector("#five").click();break;
+        case "6":document.querySelector("#six").click();break;
+        case "7":document.querySelector("#seven").click();break;
+        case "8":document.querySelector("#eight").click();break;
+        case "9":document.querySelector("#nine").click();break;
+        case "10":document.querySelector("#ten").click();break;
+        case "+":document.querySelector("#plu").click();break;
+        case "-":document.querySelector("#sub").click();break;
+        case "*":document.querySelector("#mul").click();break;
+        case "/":document.querySelector("#div").click();break;
+        case "=":document.querySelector("#equ").click();break;
+        case "Backspace":document.querySelector(".c").click();break;
+    }
 });
