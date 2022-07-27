@@ -1,13 +1,6 @@
 const add=(a,b)=>a+b;
 const subtract=(a,b)=>a-b;
-const multiply=(a,b)=>{
-    if(Number.isInteger(a) && Number.isInteger(b)){console.log("Int");
-        return a*b;
-    }
-    else{console.log("NonInt");
-        return (a*b).toFixed(2);
-    }
-};
+const multiply=(a,b)=>(a*b).toFixed(2);
 const divide=(a,b)=>(a/b).toFixed(2);
 const operate=(operator,a,b)=>{
     switch(operator){
