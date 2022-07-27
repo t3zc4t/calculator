@@ -49,16 +49,17 @@ document.querySelectorAll(".op,.eq").forEach(elem=>elem.addEventListener("click"
     if(document.querySelector(".display").innerText!=""){
     switch (clickedOp){
         case "+":
-            total=operate(clickedOp,parseInt(document.querySelector(".old").innerText),parseInt(document.querySelector(".display").innerText));document.querySelector(".old").innerText=total;clickedOpTimes=true;break;
+            total=operate(clickedOp,+document.querySelector(".old").innerText,+document.querySelector(".display").innerText);document.querySelector(".old").innerText=total;clickedOpTimes=true;break;
         case "*":
-            total=operate(clickedOp,parseInt(document.querySelector(".old").innerText),parseInt(document.querySelector(".display").innerText));document.querySelector(".old").innerText=total;clickedOpTimes=true;break;
+            total=operate(clickedOp,+document.querySelector(".old").innerText,+document.querySelector(".display").innerText);document.querySelector(".old").innerText=total;clickedOpTimes=true;break;
         case "/":
-            total=operate(clickedOp,parseInt(document.querySelector(".old").innerText),parseInt(document.querySelector(".display").innerText));if(total==Infinity){alert("Error, don't divide by 0!");clearAll();}else{document.querySelector(".old").innerText=total;}clickedOpTimes=true;break;
+            total=operate(clickedOp,+document.querySelector(".old").innerText,+document.querySelector(".display").innerText);if(total==Infinity){alert("Error, don't divide by 0!");clearAll();}else{document.querySelector(".old").innerText=total;}clickedOpTimes=true;break;
         case "-":
-            total=operate(clickedOp,parseInt(document.querySelector(".old").innerText),parseInt(document.querySelector(".display").innerText));document.querySelector(".old").innerText=total;clickedOpTimes=true;break;
+            total=operate(clickedOp,+document.querySelector(".old").innerText,+document.querySelector(".display").innerText);document.querySelector(".old").innerText=total;clickedOpTimes=true;break;
     }
    }}
    document.querySelector(".display").innerText="";clickedOp=elem.target.innerText;document.querySelector(".operator").innerText=clickedOp;
+   if(document.querySelector(".old").innerText[document.querySelector(".old").innerText.length-1]+document.querySelector(".old").innerText[document.querySelector(".old").innerText.length-2]=="00"){document.querySelector(".old").innerText=parseInt(document.querySelector(".old").innerText);}
 }));
 
 document.querySelector(".point").addEventListener("click",elem=>{
