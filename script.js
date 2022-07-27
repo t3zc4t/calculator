@@ -64,6 +64,13 @@ document.querySelector(".ac").addEventListener("click",elem=>{
    clearAll();
 });
 
+document.querySelector(".c").addEventListener("click",elem=>{
+    let displayText=document.querySelector(".display").innerText;
+    if(displayText!=""){
+        document.querySelector(".display").innerText=displayText.slice(0,-1);
+    }
+ });
+
 document.querySelector("body").addEventListener("keydown",elem=>{
 console.log(elem);
 switch (elem.key){
@@ -77,5 +84,10 @@ switch (elem.key){
     case "8":document.querySelector("#eight").click();break;
     case "9":document.querySelector("#nine").click();break;
     case "10":document.querySelector("#ten").click();break;
+    case "+":document.querySelector("#plu").click();break;
+    case "-":document.querySelector("#sub").click();break;
+    case "*":document.querySelector("#mul").click();break;
+    case "/":document.querySelector("#div").click();break;
+    case "=":document.querySelector("#equ").click();break;
 }
 });
